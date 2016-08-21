@@ -45,15 +45,6 @@ class <%= classname %> extends WP_Widget {
 
 
 	/**
-	 * Shortcode name for this widget
-	 *
-	 * @var string
-	 * @since  NEXT
-	 */
-	protected static $shortcode = '<%= widgetslug %>';
-
-
-	/**
 	 * Construct widget class.
 	 *
 	 * @since  NEXT
@@ -76,7 +67,6 @@ class <%= classname %> extends WP_Widget {
 		add_action( 'save_post',    array( $this, 'flush_widget_cache' ) );
 		add_action( 'deleted_post', array( $this, 'flush_widget_cache' ) );
 		add_action( 'switch_theme', array( $this, 'flush_widget_cache' ) );
-		add_shortcode( self::$shortcode, array( __CLASS__, 'get_widget' ) );
 	}
 
 
@@ -115,28 +105,14 @@ class <%= classname %> extends WP_Widget {
 
 
 	/**
-	 * Return the widget/shortcode output
+	 * Return the widget output
 	 *
 	 * @since  NEXT
-	 * @param  array $atts Array of widget/shortcode attributes/args.
+	 * @param  array $atts Array of widget attributes/args.
 	 * @return string       Widget output
 	 */
 	public static function get_widget( $atts ) {
 		$widget = '';
-
-		// Set up default values for attributes.
-		$atts = shortcode_atts(
-			array(
-				'before_widget' => '',
-				'after_widget'  => '',
-				'before_title'  => '',
-				'after_title'   => '',
-				'title'         => '',
-				'text'          => '',
-			),
-			(array) $atts,
-			self::$shortcode
-		);
 
 		// Before widget hook.
 		$widget .= $atts['before_widget'];
