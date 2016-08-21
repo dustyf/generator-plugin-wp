@@ -104,12 +104,12 @@ class <%= classname %> extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		echo self::get_widget( array(
-			'before_widget' => $args['before_widget'],
-			'after_widget'  => $args['after_widget'],
-			'before_title'  => $args['before_title'],
-			'after_title'   => $args['after_title'],
-			'title'         => $instance['title'],
-			'text'          => $instance['text'],
+			'before_widget' => isset( $instance['before_widget'] ) ? $instance['before_widget'] : $args['before_widget'],
+			'after_widget'  => isset( $instance['after_widget'] ) ? $instance['after_widget'] : $args['after_widget'],
+			'before_title'  => isset( $instance['before_title'] ) ? $instance['before_title'] : $args['before_title'],
+			'after_title'   => isset( $instance['after_title'] ) ? $instance['after_title'] : $args['after_title'],
+			'title'         => isset( $instance['title'] ) ? $instance['title'] : $args['title'],
+			'text'          => isset( $instance['text'] ) ? $instance['title'] : $args['text'],
 		) );
 	}
 
