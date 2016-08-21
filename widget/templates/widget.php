@@ -93,7 +93,7 @@ class <%= classname %> extends WP_Widget {
 	 * @return void
 	 */
 	public function widget( $args, $instance ) {
-		echo self::get_widget( array(
+		echo $this->get_widget( array(
 			'before_widget' => isset( $instance['before_widget'] ) ? $instance['before_widget'] : $args['before_widget'],
 			'after_widget'  => isset( $instance['after_widget'] ) ? $instance['after_widget'] : $args['after_widget'],
 			'before_title'  => isset( $instance['before_title'] ) ? $instance['before_title'] : $args['before_title'],
@@ -111,7 +111,7 @@ class <%= classname %> extends WP_Widget {
 	 * @param  array $atts Array of widget attributes/args.
 	 * @return string       Widget output
 	 */
-	public static function get_widget( $atts ) {
+	public function get_widget( $atts ) {
 		$widget = '';
 
 		// Before widget hook.
